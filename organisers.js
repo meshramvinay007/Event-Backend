@@ -33,7 +33,7 @@ router.post("/", function (req, res, next) {
   Organiser.save().then(res.send("Successfully added organiser"));
 });
 
-router('/:id',function(req,res,next){
+router.get('/:id',function(req,res){
     const id = req.params.id;
 
     Organiser.findByIdAndDelete(id,function(err,response){

@@ -57,7 +57,7 @@ router.get("/", function (req, res,next) {
 });
 
 
-router.delete('/:id',function(req,res,next){
+router.delete('/:id',function(req,res){
     id = req.params.id;
 
     Resource.findByIdAndDelete(id,function(err){

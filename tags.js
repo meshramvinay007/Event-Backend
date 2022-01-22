@@ -13,7 +13,7 @@ const tagSchema = new mongoose.Schema({
 
 const Tag = mongoose.model("tag", tagSchema);
 
-router.get("/", function (req, res,next) {
+router.get("/", function (req, res) {
   Tag.find({}, function (err, response) {
     if (err) {
       res.send(err);
@@ -26,24 +26,23 @@ router.get("/", function (req, res,next) {
 router.post("/", function (req, res) {
   const name = req.body.name;
 
-  const oganiser = new Tag({
+  const tag = new Tag({
     name,
   });
 
   tag.save().then(res.send("Successfully added tag"));
 });
 
-
-router('/:id',function(req,res,next){
-    const id = req.params.id;
-
-    Tag.findByIdAndDelete(id,function(err,response){
-        if(err){
-            res.send(err);
-        } else {
-            res.send("Successfully deleted tag");
-        }
-    })
+router.get('/:id',function(req,res){
+  Tag.findById(req.params.id,function(err,result){
+    if(err){
+      res.send(err)
+    } else {
+      res.send(result);
+    }
+  })
 })
+
+
 
 module.exports = router;

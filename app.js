@@ -1,17 +1,22 @@
-const express = require("express");
+const express = require('express');
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+
+const app = express();
+
+
 const Modertors = require("./moderators");
 const Speakers = require("./speakers");
-const app = express();
 const Organisers = require("./organisers");
 const Resouces = require("./resources");
 const Tags = require("./tags");
 
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 app.use("/moderators", Modertors);
-app.use("./speakers", Speakers);
+app.use("/speakers", Speakers);
 app.use("/organisers", Organisers);
 app.use("/tags", Tags);
 app.use("/resources", Resouces);

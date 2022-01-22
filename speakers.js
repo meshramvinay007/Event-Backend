@@ -50,7 +50,7 @@ router.post("/", upload.single("speakerImage"), function (req, res,next) {
   speaker.save().then(res.send("Successfully send the data."));
 });
 
-router.put("/:id", upload.single("speakerImage"), function (req, res,next) {
+router.put("/:id", upload.single("speakerImage"), function (req, res) {
   const name = req.body.name;
   const id = req.params.id;
   const desc = req.body.desc;
@@ -69,7 +69,7 @@ router.put("/:id", upload.single("speakerImage"), function (req, res,next) {
   );
 });
 
-router.delete("/:id", function (req, res,next) {
+router.delete("/:id", function (req, res) {
   id = req.params.id;
   Speaker.findByIdAndDelete(id, function (err) {
     if (err) {

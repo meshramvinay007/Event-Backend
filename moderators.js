@@ -49,7 +49,7 @@ router.post("/", upload.single("moderatorImage"), function (req, res, next) {
   moderator.save().then(res.send("Successfully send the data."));
 });
 
-router.put("/:id", upload.single("moderatorImage"), function (req, res, next) {
+router.put("/:id", upload.single("moderatorImage"), function (req, res) {
   const name = req.body.name;
   const id = req.params.id;
   const desc = req.body.desc;
